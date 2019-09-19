@@ -48,17 +48,6 @@ class MainActivity : AppCompatActivity() {
         updateLike(firstPost)
         updateComment(firstPost)
         updateShare(firstPost)
-        //
-        if (firstPost.quantityOfShares == 0) {
-            quantityOfShares.text = ""
-        }
-        else {
-            quantityOfShares.text = firstPost.quantityOfShares.toString()
-        }
-        if (firstPost.sharedByMe) {
-            quantityOfShares.setTextColor(Color.RED)
-            shareButton.setImageResource(R.drawable.ic_share_active_24dp)
-        }
     }
 
     private fun timeInSecondsToString(sec : Long = 0) : String {
