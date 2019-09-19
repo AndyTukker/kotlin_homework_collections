@@ -61,6 +61,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewChair"
         tools:text="Sample of text" />
 
+    <ImageView
+        android:id="@+id/videoLogo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="video"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_logo_of_youtube" />
+
     <TextView
         android:id="@+id/quantityOfShares"
         android:layout_width="16dp"
@@ -70,7 +80,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo"
         tools:text="2" />
 
     <ImageButton
@@ -83,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/quantityOfShares"
         app:layout_goneMarginEnd="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo" />
 
     <TextView
         android:id="@+id/quantityOfComments"
@@ -95,7 +105,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@id/shareButton"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo"
         tools:text="2" />
 
     <ImageButton
@@ -108,7 +118,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/quantityOfComments"
         app:layout_goneMarginEnd="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo" />
 
     <TextView
         android:id="@+id/quantityOfLikes"
@@ -120,7 +130,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@id/commentButton"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo"
         tools:text="2" />
 
     <ImageButton
@@ -133,6 +143,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/quantityOfLikes"
         app:layout_goneMarginEnd="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo" />
+
+    <ImageButton
+        android:id="@+id/locationButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#ffffff"
+        android:src="@drawable/ic_location_on_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/likeButton"
+        app:layout_constraintTop_toBottomOf="@+id/videoLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

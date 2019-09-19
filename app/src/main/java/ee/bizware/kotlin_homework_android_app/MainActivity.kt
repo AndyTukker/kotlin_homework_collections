@@ -1,9 +1,12 @@
 package ee.bizware.kotlin_homework_android_app
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import ee.bizware.kotlin_homework_android_app.dto.Coordinates
 import kotlinx.android.synthetic.main.activity_main.*
 import ee.bizware.kotlin_homework_android_app.dto.Post
 
@@ -21,11 +24,19 @@ class MainActivity : AppCompatActivity() {
             sharedByMe = true,
             quantityOfLikes = 1,
             quantityOfComments = 1,
-            quantityOfShares = 1)
+            quantityOfShares = 1,
+            address = "Mulla 1, 10611 Tallinn",
+            place = Coordinates(59.434988F, 24.717758F),
+            videoUrl = "https://www.youtube.com/watch?v=NApLB4AhaLM"
+        )
         val currentMoment = System.currentTimeMillis()/1000
         created.text = timeInSecondsToString(currentMoment - firstPost.createdTimeStamp)
         author.text = firstPost.author
         content.text = firstPost.content
+        //
+        locationButton.visibility = if (firstPost.address == "") View.GONE else View.VISIBLE
+        //
+        videoLogo.visibility = if (firstPost.videoUrl == "") View.GONE else View.VISIBLE
         //
         likeButton.setOnClickListener{
             firstPost.likedByMe = !firstPost.likedByMe
@@ -45,6 +56,24 @@ class MainActivity : AppCompatActivity() {
             updateShare(firstPost)
         }
         //
+        locationButton.setOnClickListener{
+            val lat = firstPost.place.lat
+            val lng = firstPost.place.lng
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse("geo:$lat,$lng")
+            }
+            startActivity(intent)
+        }
+        //
+        videoLogo.setOnClickListener{
+            val videoUrl = firstPost.videoUrl
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse(videoUrl)
+            }
+            startActivity(intent)
+        }
         updateLike(firstPost)
         updateComment(firstPost)
         updateShare(firstPost)

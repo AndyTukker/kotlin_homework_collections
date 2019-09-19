@@ -11,5 +11,15 @@ class Post(
     //
     var quantityOfLikes: Int = 0,
     var quantityOfComments: Int = 0,
-    var quantityOfShares: Int = 0
+    var quantityOfShares: Int = 0,
+    //
+    val address: String = "",
+    val place: Coordinates = Coordinates(),
+    //
+    val videoUrl: String = ""
+)
+
+class Coordinates(
+    val lat: Float = 0F,
+    val lng: Float = 0F
 )
