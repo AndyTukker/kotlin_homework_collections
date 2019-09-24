@@ -72,7 +72,11 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = PostAdapter(list)
             //фильтр работает, но эта строка срабатывает только один раз, при старте приложения
-            //adapter = PostAdapter(list.filter { !it.hidePost })
+            //adapter = PostAdapter(list.filter { !it.hidden })
+            // это и есть item hide callback
+            //adapter = PostAdapter(list, { adapter.setItems(list.filter { !it.hidden } ) } )
+            // эту функцию придётся написать самим и там сделать notifyDataSetChanged
+
         }
     }
 }

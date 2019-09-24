@@ -21,7 +21,7 @@ class Post(
     val link: String = "",
     //
     val source: Post? = null,
-    var hidePost: Boolean = false
+    var hidden: Boolean = false
 )
 
 class Coordinates(

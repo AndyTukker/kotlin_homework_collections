@@ -11,7 +11,7 @@ import ee.bizware.kotlin_homework_android_app.dto.Post
 import ee.bizware.kotlin_homework_android_app.dto.PostType
 import kotlinx.android.synthetic.main.one_post.view.*
 
-class PostAdapter(val list: List<Post>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PostAdapter( var list: List<Post> ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.one_post, parent, false)
         return PostViewHolder(this, view)
@@ -24,6 +24,9 @@ class PostAdapter(val list: List<Post>) : RecyclerView.Adapter<RecyclerView.View
             bind(list[position])
         }
     }
+    fun updateList() {
+        list = list.filter { !it.hidden }
+    }
 }
 
 class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHolder(view) {
@@ -33,7 +36,8 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             hidePost.setOnClickListener{
                 if ( adapterPosition != RecyclerView.NO_POSITION ){
                     val item = adapter.list[adapterPosition]
-                    item.hidePost = true
+                    item.hidden = true
+                    adapter.updateList()
                     adapter.notifyDataSetChanged()
                 }
             }
